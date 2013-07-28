@@ -170,7 +170,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	ImageView.OnLongClickListener bu = new ImageView.OnLongClickListener() {
 		@Override
 		public boolean onLongClick(View v) {
-			Toast.makeText(getBaseContext(), "Long Clicked Button1.", Toast.LENGTH_SHORT).show();
+//			Toast.makeText(getBaseContext(), "Long Clicked Button1.", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(MainActivity.this, EditStatus.class);
+	  	    startActivity(intent);
 			return true;
 		}
 	};
