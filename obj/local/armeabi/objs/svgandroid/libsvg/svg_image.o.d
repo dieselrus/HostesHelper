@@ -1,121 +1,121 @@
-/Users/diesel/devtools/projects/android/HostesHelper/obj/local/armeabi/objs/svgandroid/libsvg/svg_image.o: \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_image.c \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/string.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/malloc.h \
+obj/local/armeabi/objs/svgandroid/libsvg/svg_image.o: \
+ jni/libsvg/svg_image.c \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/string.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/malloc.h \
  jni/libpng/png.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/zlib.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/zconf.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/zlib.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/zconf.h \
  jni/libpng/pngconf.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/limits.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/limits.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/limits.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/internal_types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/limits.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/syslimits.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdio.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/_types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/_types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdint.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/posix_types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/stddef.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/compiler.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/posix_types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/types.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/kernel.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/setjmp.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/setjmp.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/time.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/time.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/time.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/siginfo.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/limits.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/page.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdio.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdint.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/types.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/setjmp.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/setjmp.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/time.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/time.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/time.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/siginfo.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/siginfo.h \
  jni/libjpeg/jpeglib.h jni/libjpeg/jconfig.h jni/libjpeg/jmorecfg.h \
- jni/libjpeg/jerror.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svgint.h \
- jni/libexpat/expat/expat.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdlib.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/alloca.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/strings.h \
- /Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/memory.h \
- jni/libexpat/expat/expat_external.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_hash.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/config.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_version.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg.h \
- /Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_ascii.h
+ jni/libjpeg/jerror.h jni/libsvg/svgint.h jni/libexpat/expat/expat.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdlib.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/alloca.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/strings.h \
+ D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/memory.h \
+ jni/libexpat/expat/expat_external.h jni/libsvg/svg_hash.h jni/config.h \
+ jni/libsvg/svg_version.h jni/libsvg/svg.h jni/libsvg/svg_ascii.h
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/string.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/string.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/cdefs.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/malloc.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h:
+
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/malloc.h:
 
 jni/libpng/png.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/zlib.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/zlib.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/zconf.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/zconf.h:
 
 jni/libpng/pngconf.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/limits.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/limits.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/limits.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/limits.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/internal_types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/limits.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/syslimits.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdio.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/page.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/_types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdio.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/_types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdint.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdint.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/posix_types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/stddef.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/compiler.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/posix_types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/types.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/kernel.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/types.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/setjmp.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/machine/setjmp.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/setjmp.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/time.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/machine/setjmp.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/sys/time.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/time.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/linux/time.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/sys/time.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm/siginfo.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/linux/time.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm/siginfo.h:
+
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/asm-generic/siginfo.h:
 
 jni/libjpeg/jpeglib.h:
 
@@ -125,26 +125,26 @@ jni/libjpeg/jmorecfg.h:
 
 jni/libjpeg/jerror.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svgint.h:
+jni/libsvg/svgint.h:
 
 jni/libexpat/expat/expat.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/stdlib.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/stdlib.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/alloca.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/alloca.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/strings.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/strings.h:
 
-/Users/diesel/devtools/adt-bundle-mac/ndk/platforms/android-3/arch-arm/usr/include/memory.h:
+D:/DevTools/adt-bundle/ndk/platforms/android-14/arch-arm/usr/include/memory.h:
 
 jni/libexpat/expat/expat_external.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_hash.h:
+jni/libsvg/svg_hash.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/config.h:
+jni/config.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_version.h:
+jni/libsvg/svg_version.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg.h:
+jni/libsvg/svg.h:
 
-/Users/diesel/devtools/projects/android/HostesHelper/jni/libsvg/svg_ascii.h:
+jni/libsvg/svg_ascii.h:

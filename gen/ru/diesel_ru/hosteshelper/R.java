@@ -34,8 +34,8 @@ public final class R {
     public static final class id {
         public static final int RL=0x7f090000;
         public static final int TableView=0x7f090001;
-        public static final int checkBox1=0x7f090016;
-        public static final int datePicker1=0x7f09000e;
+        public static final int checkBox1=0x7f090015;
+        public static final int datePicker1=0x7f09000d;
         public static final int imageView1=0x7f090003;
         public static final int imageView10=0x7f09000c;
         public static final int imageView2=0x7f090004;
@@ -46,22 +46,21 @@ public final class R {
         public static final int imageView7=0x7f090009;
         public static final int imageView8=0x7f09000a;
         public static final int imageView9=0x7f09000b;
-        public static final int menu_menu=0x7f09001b;
-        public static final int menu_search=0x7f090019;
-        public static final int menu_update=0x7f09001a;
-        public static final int open=0x7f09001d;
-        public static final int rl1=0x7f090010;
-        public static final int save=0x7f09001c;
-        public static final int swStatus=0x7f090013;
+        public static final int menu_menu=0x7f09001a;
+        public static final int menu_search=0x7f090018;
+        public static final int menu_update=0x7f090019;
+        public static final int open=0x7f09001c;
+        public static final int rl1=0x7f09000f;
+        public static final int save=0x7f09001b;
+        public static final int swStatus=0x7f090012;
         public static final int tableRow=0x7f090002;
-        public static final int textView1=0x7f09000d;
-        public static final int textView3=0x7f090014;
-        public static final int textView4=0x7f090015;
-        public static final int textView5=0x7f090018;
-        public static final int timePicker1=0x7f09000f;
-        public static final int tvDateTime=0x7f090017;
-        public static final int tvRoom=0x7f090011;
-        public static final int tvTable=0x7f090012;
+        public static final int textView3=0x7f090013;
+        public static final int textView4=0x7f090014;
+        public static final int textView5=0x7f090017;
+        public static final int timePicker1=0x7f09000e;
+        public static final int tvDateTime=0x7f090016;
+        public static final int tvRoom=0x7f090010;
+        public static final int tvTable=0x7f090011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -161,11 +160,11 @@ public final class R {
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SvgDrawable_android_antialias ru.diesel_ru.hosteshelper:android_antialias}</code></td><td></td></tr>
-           <tr><td><code>{@link #SvgDrawable_android_dither ru.diesel_ru.hosteshelper:android_dither}</code></td><td></td></tr>
-           <tr><td><code>{@link #SvgDrawable_android_filter ru.diesel_ru.hosteshelper:android_filter}</code></td><td></td></tr>
-           <tr><td><code>{@link #SvgDrawable_android_gravity ru.diesel_ru.hosteshelper:android_gravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #SvgDrawable_android_src ru.diesel_ru.hosteshelper:android_src}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgDrawable_android_antialias android:antialias}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgDrawable_android_dither android:dither}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgDrawable_android_filter android:filter}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgDrawable_android_gravity android:gravity}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgDrawable_android_src android:src}</code></td><td></td></tr>
            </table>
            @see #SvgDrawable_android_antialias
            @see #SvgDrawable_android_dither
@@ -178,33 +177,33 @@ public final class R {
             0x0101011c
         };
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_antialias}
+          <p>This symbol is the offset where the {@link android.R.attr#antialias}
           attribute's value can be found in the {@link #SvgDrawable} array.
-          @attr name android:android_antialias
+          @attr name android:antialias
         */
         public static final int SvgDrawable_android_antialias = 2;
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_dither}
+          <p>This symbol is the offset where the {@link android.R.attr#dither}
           attribute's value can be found in the {@link #SvgDrawable} array.
-          @attr name android:android_dither
+          @attr name android:dither
         */
         public static final int SvgDrawable_android_dither = 4;
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_filter}
+          <p>This symbol is the offset where the {@link android.R.attr#filter}
           attribute's value can be found in the {@link #SvgDrawable} array.
-          @attr name android:android_filter
+          @attr name android:filter
         */
         public static final int SvgDrawable_android_filter = 3;
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_gravity}
+          <p>This symbol is the offset where the {@link android.R.attr#gravity}
           attribute's value can be found in the {@link #SvgDrawable} array.
-          @attr name android:android_gravity
+          @attr name android:gravity
         */
         public static final int SvgDrawable_android_gravity = 0;
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_src}
+          <p>This symbol is the offset where the {@link android.R.attr#src}
           attribute's value can be found in the {@link #SvgDrawable} array.
-          @attr name android:android_src
+          @attr name android:src
         */
         public static final int SvgDrawable_android_src = 1;
         /** Attributes that can be used with a SvgImageView.
@@ -213,7 +212,7 @@ public final class R {
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SvgImageView_android_src ru.diesel_ru.hosteshelper:android_src}</code></td><td></td></tr>
+           <tr><td><code>{@link #SvgImageView_android_src android:src}</code></td><td></td></tr>
            </table>
            @see #SvgImageView_android_src
          */
@@ -221,9 +220,9 @@ public final class R {
             0x01010119
         };
         /**
-          <p>This symbol is the offset where the {@link ru.diesel_ru.hosteshelper.R.attr#android_src}
+          <p>This symbol is the offset where the {@link android.R.attr#src}
           attribute's value can be found in the {@link #SvgImageView} array.
-          @attr name android:android_src
+          @attr name android:src
         */
         public static final int SvgImageView_android_src = 0;
     };
