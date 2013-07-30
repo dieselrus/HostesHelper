@@ -2,6 +2,10 @@ package ru.diesel_ru.hosteshelper;
 
 import java.net.DatagramPacket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -19,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -30,21 +36,59 @@ public class EditStatus extends Activity {
 	int myHour = 14;
 	int myMinute = 35;
 	
+	static final ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_status);
 		
-		tvDateTime = (TextView) findViewById(R.id.tvDateTime);
+		// получаем экземпляр элемента ListView
+		ListView lv = (ListView)findViewById(R.id.listEdit);
+		
+		
+		HashMap<String,String> temp = new HashMap<String,String>();
+		temp.put("pen","MONT Blanc");
+		temp.put("price", "200.00$");
+		temp.put("color", "Silver, Grey, Black");
+		list.add(temp);
+		HashMap<String,String> temp1 = new HashMap<String,String>();
+		temp1.put("pen","Gucci");
+		temp1.put("price", "300.00$");
+		temp1.put("color", "Gold, Red");
+		list.add(temp1);
+		HashMap<String,String> temp2 = new HashMap<String,String>();
+		temp2.put("pen","Parker");
+		temp2.put("price", "400.00$");
+		temp2.put("color", "Gold, Blue");
+		list.add(temp2);
+		HashMap<String,String> temp3 = new HashMap<String,String>();
+		temp3.put("pen","Sailor");
+		temp3.put("price", "500.00$");
+		temp3.put("color", "Silver");
+		list.add(temp3);
+		HashMap<String,String> temp4 = new HashMap<String,String>();
+		temp4.put("pen","Porsche Design");
+		temp4.put("price", "600.00$");
+		temp4.put("color", "Silver, Grey, Red");
+		list.add(temp4);
+		
+		// используем адаптер данных
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, new String[] {"pen","price","color"},);
+		//SimpleAdapter adapter = new SimpleAdapter(this,list,android.R.layout.simple_list_item_1,new String[] {"pen","price"},new int[] {R.id.tvListMenu,R.id.tvListComment});
+		SimpleAdapter adapter = new SimpleAdapter(this, list, android.R.layout.simple_list_item_1, new String[] {"pen","price"}, new int[] {R.id.tvListMenu,R.id.tvListComment});
+
+		lv.setAdapter(adapter);
+	    
 	}
 	
   	@SuppressWarnings("deprecation")
 	public void onClick(View v){
   		
   		switch (v.getId()) {
-		case R.id.tvDateTime:
-			showDialog(DIALOG_TIME);
-			break;
+//		case R.id.tvDateTime:
+//			showDialog(DIALOG_TIME);
+//			break;
 
 		default:
 			break;
@@ -114,4 +158,13 @@ public class EditStatus extends Activity {
 	          //tvTime.setText("Time is " + myHour + " hours " + myMinute + " minutes");
 		}
       };
+      
+      @SuppressWarnings("deprecation")
+	  @Override  
+      protected void onPrepareDialog(int id, Dialog dialog) {    
+    	  super.onPrepareDialog(id, dialog);    
+    	  if (id == DIALOG_DATA_TIME) {
+    		  
+    	  }
+      }
 }

@@ -13,5 +13,7 @@
     <color name="switsh_off">#f90202</color>
     <color name="switsh_on">#27ea00</color>
     <string name="setDateTime">Установить дату и время</string>
+    <color name="fontColor1">#909090</color>
+    <color name="fontWhite">#ffffff</color>
 
 </resources>
