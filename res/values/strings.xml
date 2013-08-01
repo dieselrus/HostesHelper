@@ -15,5 +15,7 @@
     <string name="setDateTime">Установить дату и время</string>
     <color name="fontColor1">#909090</color>
     <color name="fontWhite">#ffffff</color>
+    <string name="swich_on">O</string>
+    <string name="swich_off">I</string>
 
 </resources>

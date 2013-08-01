@@ -35,13 +35,59 @@
         android:textColor="#ffffff"
         android:textSize="70sp" />
 
+		<Switch
+		    android:id="@+id/switch1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentRight="true"
+		    android:layout_below="@+id/tvTable"
+		    android:text="@string/status"
+		    android:textColor="@color/fontWhite"
+		    android:textOff="@string/swich_off"
+		    android:textOn="@string/swich_on"
+		    android:textSize="40sp" />
+
 		<ListView
 		    android:id="@+id/listEdit"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_below="@+id/tvTable"
-		    android:dividerHeight="@dimen/activity_horizontal_margin" >
+		    android:layout_below="@+id/checkBox1"
+		    android:background="@drawable/bg" >
 
 		</ListView>
+
+		<CheckBox
+		    android:id="@+id/checkBox1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBottom="@+id/tvReserv"
+		    android:layout_alignParentRight="true"
+		    android:layout_below="@+id/textView2"
+		    android:textSize="30sp" />
+
+		<TextView
+		    android:id="@+id/textView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentRight="true"
+		    android:layout_below="@+id/switch1"
+		    android:text="@string/status_comment"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:textColor="@color/fontColor1"
+		    android:textSize="30sp" />
+
+		<TextView
+		    android:id="@+id/tvReserv"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_below="@+id/textView2"
+		    android:layout_toLeftOf="@+id/checkBox1"
+		    android:text="@string/reserv"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:textColor="@color/fontWhite"
+		    android:textSize="40sp" />
 
 </RelativeLayout>

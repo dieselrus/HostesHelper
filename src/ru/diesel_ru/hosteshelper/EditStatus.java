@@ -47,37 +47,14 @@ public class EditStatus extends Activity {
 		ListView lv = (ListView)findViewById(R.id.listEdit);
 		
 		
-		HashMap<String,String> temp = new HashMap<String,String>();
-		temp.put("pen","MONT Blanc");
-		temp.put("price", "200.00$");
-		temp.put("color", "Silver, Grey, Black");
-		list.add(temp);
-		HashMap<String,String> temp1 = new HashMap<String,String>();
-		temp1.put("pen","Gucci");
-		temp1.put("price", "300.00$");
-		temp1.put("color", "Gold, Red");
-		list.add(temp1);
-		HashMap<String,String> temp2 = new HashMap<String,String>();
-		temp2.put("pen","Parker");
-		temp2.put("price", "400.00$");
-		temp2.put("color", "Gold, Blue");
-		list.add(temp2);
-		HashMap<String,String> temp3 = new HashMap<String,String>();
-		temp3.put("pen","Sailor");
-		temp3.put("price", "500.00$");
-		temp3.put("color", "Silver");
-		list.add(temp3);
-		HashMap<String,String> temp4 = new HashMap<String,String>();
-		temp4.put("pen","Porsche Design");
-		temp4.put("price", "600.00$");
-		temp4.put("color", "Silver, Grey, Red");
-		list.add(temp4);
-		
 		// используем адаптер данных
 		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,	android.R.layout.simple_list_item_1, new String[] {"pen","price","color"},);
 		//SimpleAdapter adapter = new SimpleAdapter(this,list,android.R.layout.simple_list_item_1,new String[] {"pen","price"},new int[] {R.id.tvListMenu,R.id.tvListComment});
-		SimpleAdapter adapter = new SimpleAdapter(this, list, android.R.layout.simple_list_item_1, new String[] {"pen","price"}, new int[] {R.id.tvListMenu,R.id.tvListComment});
 
+		String[] names = { "Иван", "Марья", "Петр", "Антон", "Даша", "Борис",  "Костя", "Игорь", "Анна", "Денис", "Андрей" };
+		// создаем адаптер    
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+		
 		lv.setAdapter(adapter);
 	    
 	}
@@ -106,8 +83,9 @@ public class EditStatus extends Activity {
         
         // Создаем диалог ввода даты и времени
         if(id == DIALOG_DATA_TIME){
-            AlertDialog.Builder adb = new AlertDialog.Builder(this);    
-            adb.setTitle("Дата и время");    
+            AlertDialog.Builder adb = new AlertDialog.Builder(this); 
+            
+            adb.setTitle("Дата и время");   
             // создаем view из dialog.xml    
             LinearLayout view = (LinearLayout) getLayoutInflater().inflate(R.layout.date_time, null);   
             // устанавливаем ее, как содержимое тела диалога    

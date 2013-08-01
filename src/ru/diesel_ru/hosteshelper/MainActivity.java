@@ -7,15 +7,20 @@ import java.util.regex.Pattern;
 
 import com.libsvg.SvgDrawable;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,9 +29,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 
     ImageView img1, img2, img3, img4, img5, img6, img7, img8 ,img9, img10;
 	ImageView[] ImageViewArrayRoom1, ImageViewArrayRoom2, ImageViewArrayRoom3, ImageViewArrayRoom4;
+	//ImageView[] ImageViewRoom =  {ImageViewArrayRoom1, ImageViewArrayRoom2, ImageViewArrayRoom3, ImageViewArrayRoom4};
+	ArrayList<ImageView[]> ArrayListRoom;
+	
 	ViewPager viewPager;
 	public static int roomNum;
 	public static int tableNum;
+	
+	private TCPClient mTcpClient;
+    private final static int DIALOG_ID_VIEW = 0;
+    private final static int DIALOG_EDIT_ID = 1;
+    
+	private SharedPreferences sp;
+	String[] strTableName = null;
+	String strTableDataGet;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +179,26 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 //	    tab.setText("tab2");
 //	    tab.setTabListener(this);
 //	    actionBar.addTab(tab);
+        
+        ArrayListRoom.add(ImageViewArrayRoom1);
+        ArrayListRoom.add(ImageViewArrayRoom2);
+        ArrayListRoom.add(ImageViewArrayRoom3);
+        ArrayListRoom.add(ImageViewArrayRoom4);
+        
+        
+		sp = PreferenceManager.getDefaultSharedPreferences(this);       
+		String _address = null;
+		_address = sp.getString("ServerAddress","");
+		if (_address != null)
+			TCPClient.SERVERIP = _address;
+		String _port = null;
+		_port = sp.getString("ServerPort","");
+		if (_port != null && _port != "")
+			TCPClient.SERVERPORT = Integer.parseInt(_port);
+		//TCPClient.SERVERPORT = Integer.parseInt(sp.getString("ServerPort",""));
+		
+        // connect to the server
+        new connectTask().execute("");
 	    	    
 	}
 
@@ -185,6 +221,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
   		roomNum = viewPager.getCurrentItem() + 1;
   		//tableNum = (int) v.getTag();
   		tableNum = Integer.valueOf((String) v.getTag());
+  		
+  		sendData("|ReadTableData|" + roomNum + "|"+ tableNum + "|\n");
   		
   		Intent intent = new Intent(MainActivity.this, ViewStatus.class);
   	    startActivity(intent);
@@ -331,6 +369,24 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	      return true;
     }
 
+	// Обрабатывает нажатия на пунктах меню
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.settings:
+//	        Log.i("LOG", "Settings");
+	        Intent intent = new Intent(MainActivity.this, PrefActivity.class);
+	  	    startActivity(intent);
+	        return true;
+	    case R.id.menu_update:
+	    	sendData("|ReadTableStatus|\n");
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+	
 	@Override
 	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
 		// TODO Auto-generated method stub
@@ -349,4 +405,89 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 		
 	}
 
+	// Отправляем данные на сервер
+    private void sendData(String _data){
+        if (mTcpClient != null) {
+            mTcpClient.sendMessage(_data);
+        }
+        else{
+        	new connectTask().execute("");
+        }
+    }
+    
+	//  Асинхронный поток для передачи и получения данных
+    public class connectTask extends AsyncTask<String,String,TCPClient> {
+ 
+        @Override
+        protected TCPClient doInBackground(String... message) {
+ 
+            //we create a TCPClient object and
+            mTcpClient = new TCPClient(new TCPClient.OnMessageReceived() {
+                @Override
+                //here the messageReceived method is implemented
+                public void messageReceived(String message) {
+                    //this method calls the onProgressUpdate
+                    publishProgress(message);
+                }
+            });
+            mTcpClient.run();
+ 
+            return null;
+        }
+ 
+		@Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            System.out.println(values);
+
+            ParsingData(values[0]);
+        }
+		
+		@SuppressWarnings("deprecation")
+		private void ParsingData(String _data)
+		{
+			String a = _data.split("\\|", -1)[1];
+//			String string1;
+//			String string2;
+//			//две строки равны, если
+//			(string1).compareToIgnoreCase(getString(string2)) == 0
+			strTableDataGet = null;
+			// Получаем данные по столику
+			if(a.compareToIgnoreCase("ReadTableData") == 0)
+			{
+				strTableDataGet = _data;
+				showDialog(DIALOG_ID_VIEW);
+			}
+			
+			// Получаем состояние столиков
+			if(a.compareToIgnoreCase("ReadTableStatus") == 0)
+			{
+				String btnStatus[] = _data.split("\\|", -1);
+				for(String str:btnStatus){
+//					for (ImageView button : ImageViewArray) {		
+//						if(button.getTag().toString().compareToIgnoreCase(str.split("\\:", -1)[0]) == 0){
+//							if(str.split("\\:", -1)[1].compareToIgnoreCase("free") == 0)
+//								button.setImageDrawable(blueImg[Integer.valueOf(button.getTag().toString()) - 1]);
+//							if(str.split("\\:", -1)[1].compareToIgnoreCase("busy") == 0)
+//								button.setImageDrawable(redImg[Integer.valueOf(button.getTag().toString()) - 1]);
+////							if(str.split("\\:", -1)[1].compareToIgnoreCase("order") == 0)
+////								button.setBackgroundDrawable(new PaintDrawable(Color.YELLOW));
+//						}
+//			        }
+				}
+			}
+			
+			// Получаем состояние записи данных
+			if(a.compareToIgnoreCase("StatusWrite") == 0)
+			{
+				String StatusWrite[] = _data.split("\\|", -1);
+				if(StatusWrite[2].compareToIgnoreCase("true") == 0){
+					Toast.makeText(getBaseContext(), "Данные записаны!", Toast.LENGTH_SHORT).show();
+				}
+				if(StatusWrite[2].compareToIgnoreCase("false") == 0){
+					Toast.makeText(getBaseContext(), "Данные не записаны!", Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+    }
 }
