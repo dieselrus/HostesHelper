@@ -81,7 +81,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         
         for(int i = 0; i < ImageViewArrayRoom1.length; i++){
         	ImageViewArrayRoom1[i].setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        	ImageViewArrayRoom1[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, true, i+1, "blue"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+        	ImageViewArrayRoom1[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, false, 0, "blue"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
         	ImageViewArrayRoom1[i].setOnLongClickListener(bu);
         }
         
@@ -109,7 +109,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         
         for(int i = 0; i < ImageViewArrayRoom2.length; i++){
         	ImageViewArrayRoom2[i].setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        	ImageViewArrayRoom2[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, true, i+1, "yellow"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
+        	ImageViewArrayRoom2[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, false, 0, "yellow"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
         	ImageViewArrayRoom2[i].setOnLongClickListener(bu);
         }
         pages.add(page);
@@ -133,7 +133,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         
         for(int i = 0; i < ImageViewArrayRoom3.length; i++){
         	ImageViewArrayRoom3[i].setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        	ImageViewArrayRoom3[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, true, i+1, "green"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
+        	ImageViewArrayRoom3[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, false, 0, "green"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
         	ImageViewArrayRoom3[i].setOnLongClickListener(bu);
         }
         pages.add(page);
@@ -157,7 +157,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         
         for(int i = 0; i < ImageViewArrayRoom4.length; i++){
         	ImageViewArrayRoom4[i].setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        	ImageViewArrayRoom4[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, true, i+1, "magenta"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
+        	ImageViewArrayRoom4[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i+1, false, 0, "magenta"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));
         	ImageViewArrayRoom4[i].setOnLongClickListener(bu);
         }
         pages.add(page);
@@ -180,10 +180,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 //	    tab.setTabListener(this);
 //	    actionBar.addTab(tab);
         
-        ArrayListRoom.add(ImageViewArrayRoom1);
-        ArrayListRoom.add(ImageViewArrayRoom2);
-        ArrayListRoom.add(ImageViewArrayRoom3);
-        ArrayListRoom.add(ImageViewArrayRoom4);
+//        ArrayListRoom.add(ImageViewArrayRoom1);
+//        ArrayListRoom.add(ImageViewArrayRoom2);
+//        ArrayListRoom.add(ImageViewArrayRoom3);
+//        ArrayListRoom.add(ImageViewArrayRoom4);
         
         
 		sp = PreferenceManager.getDefaultSharedPreferences(this);       
@@ -222,10 +222,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
   		//tableNum = (int) v.getTag();
   		tableNum = Integer.valueOf((String) v.getTag());
   		
-  		sendData("|ReadTableData|" + roomNum + "|"+ tableNum + "|\n");
+  		sendData("|ReadTableData|" + roomNum + "-"+ tableNum + "|\n");
   		
-  		Intent intent = new Intent(MainActivity.this, ViewStatus.class);
-  	    startActivity(intent);
+//  		Intent intent = new Intent(MainActivity.this, ViewStatus.class);
+//  	    startActivity(intent);
   	}
   	
 	// Генерация svg файла
@@ -456,14 +456,16 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 			if(a.compareToIgnoreCase("ReadTableData") == 0)
 			{
 				strTableDataGet = _data;
-				showDialog(DIALOG_ID_VIEW);
+//				showDialog(DIALOG_ID_VIEW);
+				Intent intent = new Intent(MainActivity.this, ViewStatus.class);
+		  	    startActivity(intent);
 			}
 			
 			// Получаем состояние столиков
 			if(a.compareToIgnoreCase("ReadTableStatus") == 0)
 			{
-				String btnStatus[] = _data.split("\\|", -1);
-				for(String str:btnStatus){
+				String TableStatus[] = _data.split("\\|", -1);
+				for(String strStatus:TableStatus){
 //					for (ImageView button : ImageViewArray) {		
 //						if(button.getTag().toString().compareToIgnoreCase(str.split("\\:", -1)[0]) == 0){
 //							if(str.split("\\:", -1)[1].compareToIgnoreCase("free") == 0)
@@ -474,18 +476,62 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 ////								button.setBackgroundDrawable(new PaintDrawable(Color.YELLOW));
 //						}
 //			        }
+					
+					for(int j = 1; j<5;j++){
+						if(strStatus.split("\\:", -1)[0].compareToIgnoreCase(Integer.toString(j)) == 0){
+							// Table
+							int i = Integer.parseInt(strStatus.split("\\:", -1)[1]);
+							
+							// guests
+							int _guests = Integer.parseInt(strStatus.split("\\:", -1)[3]);
+							
+							// Status
+							String _color;
+							if(strStatus.split("\\:", -1)[2].compareToIgnoreCase("1") == 0){
+								_color = "red";
+								
+								switch (j) {
+							 		case 1:
+							 			ImageViewArrayRoom1[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 2:
+							 			ImageViewArrayRoom2[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 3:
+							 			ImageViewArrayRoom3[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 4:
+							 			ImageViewArrayRoom4[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+								}
+							}
+						
+						}
+					}
+//					if(strStatus.split("\\:", -1)[0].compareToIgnoreCase("2") == 0){
+//						int i = Integer.parseInt(strStatus.split("\\:", -1)[2]);
+//						String _color;
+//						int _guests = Integer.parseInt(strStatus.split("\\:", -1)[2]);
+//						
+//						if(strStatus.split("\\:", -1)[1].compareToIgnoreCase("1") == 0){
+//							_color = "red";
+//							
+//							ImageViewArrayRoom1[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i, true, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+//						}
+//					
+//					}
 				}
-			}
 			
-			// Получаем состояние записи данных
-			if(a.compareToIgnoreCase("StatusWrite") == 0)
-			{
-				String StatusWrite[] = _data.split("\\|", -1);
-				if(StatusWrite[2].compareToIgnoreCase("true") == 0){
-					Toast.makeText(getBaseContext(), "Данные записаны!", Toast.LENGTH_SHORT).show();
-				}
-				if(StatusWrite[2].compareToIgnoreCase("false") == 0){
-					Toast.makeText(getBaseContext(), "Данные не записаны!", Toast.LENGTH_SHORT).show();
+				// Получаем состояние записи данных
+				if(a.compareToIgnoreCase("StatusWrite") == 0)
+				{
+					String StatusWrite[] = _data.split("\\|", -1);
+					if(StatusWrite[2].compareToIgnoreCase("true") == 0){
+						Toast.makeText(getBaseContext(), "Данные записаны!", Toast.LENGTH_SHORT).show();
+					}
+					if(StatusWrite[2].compareToIgnoreCase("false") == 0){
+						Toast.makeText(getBaseContext(), "Данные не записаны!", Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 		}
