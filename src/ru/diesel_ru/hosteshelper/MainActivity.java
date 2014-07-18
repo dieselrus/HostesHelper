@@ -1,5 +1,10 @@
 package ru.diesel_ru.hosteshelper;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,10 +18,10 @@ import android.preference.PreferenceManager;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +44,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	private TCPClient mTcpClient;
     private final static int DIALOG_ID_VIEW = 0;
     private final static int DIALOG_EDIT_ID = 1;
+    
+    private ProgressDialog pDialog;
     
 	private SharedPreferences sp;
 	String[] strTableName = null;
@@ -198,7 +205,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 		//TCPClient.SERVERPORT = Integer.parseInt(sp.getString("ServerPort",""));
 		
         // connect to the server
-        new connectTask().execute("");
+        //new connectTask().execute("");
+		
+		new ConnectorMySQL().execute("192.168.1.44", "3306", "HostesHelper", "garcon", "123456", "SELECT name FROM garcon");
 	    	    
 	}
 
@@ -222,7 +231,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
   		//tableNum = (int) v.getTag();
   		tableNum = Integer.valueOf((String) v.getTag());
   		
-  		sendData("|ReadTableData|" + roomNum + "-"+ tableNum + "|\n");
+  		//sendData("|ReadTableData|" + roomNum + "-"+ tableNum + "|\n");
   		
 //  		Intent intent = new Intent(MainActivity.this, ViewStatus.class);
 //  	    startActivity(intent);
@@ -389,20 +398,17 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	
 	@Override
 	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	// Отправляем данные на сервер
@@ -413,6 +419,76 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         else{
         	new connectTask().execute("");
         }
+    }
+    public static void setResultSQL(ResultSet res){
+    	//res.next();
+		//str_res = res.getString(1);
+		//System.out.print(str_res);
+    	String str_res;
+    	
+		try {
+			while (res.next()) 
+			{
+				str_res = res.getString(1);
+				System.out.println(str_res);
+			}
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+    }
+    
+    public class ConnectorMySQL extends AsyncTask<String, Void, ResultSet> {
+
+    	Connection conexionMySQL;
+    	String str_res = "";
+    	
+    	@Override
+    	protected ResultSet doInBackground(String... arg) {
+    		
+    		ResultSet rs = null;
+    		
+    		try{
+    			Class.forName("com.mysql.jdbc.Driver").newInstance();
+    			
+    			conexionMySQL = DriverManager.getConnection("jdbc:mysql://" + arg[0] + ":" + arg[1] + "/" + arg[2], arg[3], arg[4]);
+    			
+    			Statement st = conexionMySQL.createStatement();
+    			String sql = arg[5];
+    			rs = st.executeQuery(sql);
+    			//rs.next();
+    			//str_res = rs.getString(1);
+    			//System.out.print(str_res);
+    			
+    		} catch (Exception e) {
+    			System.out.println("Error" + e.getMessage());
+    		}
+    		
+    		return rs;
+    	}
+    	
+    	/**
+         * Перед началом фонового потока Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            
+            pDialog = new ProgressDialog(MainActivity.this);
+            pDialog.setMessage("Загрузка продуктов. Подождите...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+            
+        }
+
+        
+    	protected void onPostExecute(ResultSet result) {
+    		// закрываем прогресс диалог после получение все продуктов
+            pDialog.dismiss();
+
+    		//System.out.print("onPostExecute");
+    		setResultSQL(result);	
+    	}
     }
     
 	//  Асинхронный поток для передачи и получения данных
