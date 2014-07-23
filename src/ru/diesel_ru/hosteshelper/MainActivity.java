@@ -1,6 +1,5 @@
 package ru.diesel_ru.hosteshelper;
 
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -43,8 +42,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	public static int tableNum;
 	
 	private TCPClient mTcpClient;
-    //private final static int DIALOG_ID_VIEW = 0;
-    //private final static int DIALOG_EDIT_ID = 1;
+    private final static int DIALOG_ID_VIEW = 0;
+    private final static int DIALOG_EDIT_ID = 1;
     
     private ProgressDialog pDialog;
     
@@ -208,7 +207,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         // connect to the server
         //new connectTask().execute("");
 		
-		//new ConnectorMySQL().execute("192.168.1.44", "3306", "HostesHelper", "garcon", "123456", "SELECT  `room` ,  `table` ,  `guests` ,  `reserved`,  `busy` FROM  `table_status`;");
+		new ConnectorMySQL().execute("192.168.1.44", "3306", "HostesHelper", "garcon", "123456", "SELECT name FROM garcon");
 	    	    
 	}
 
@@ -237,140 +236,139 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 //  		Intent intent = new Intent(MainActivity.this, ViewStatus.class);
 //  	    startActivity(intent);
   	}
-
+  	
 	// Генерация svg файла
-	public String CreateSVGImage(int bigNum, boolean Reserved, int smallNum, String Color) {
-		String svg = getString(R.string.svg_begin);
+    public String CreateSVGImage(int bigNum, boolean Reserved, int smallNum, String Color){
+ 		String svg = getString(R.string.svg_begin);
+ 		
+ 			svg += getString(R.string.svg_rectangle);
+ 			// Резервирование
+ 			if(Reserved)
+ 				svg += getString(R.string.svg_reserved);
+ 			
+ 			// Комнаты
+ 			switch (bigNum) {			
+ 	 			case 1:
+ 	 				svg += getString(R.string.svg_big1);
+ 	 				break;
+ 	 			case 2:
+ 	 				svg += getString(R.string.svg_big2);
+ 	 				break;
+ 	 			case 3:
+ 	 				svg += getString(R.string.svg_big3);
+ 	 				break;
+ 	 			case 4:
+ 	 				svg += getString(R.string.svg_big4);
+ 	 				break;
+ 	 			case 5:
+ 	 				svg += getString(R.string.svg_big5);
+ 	 				break;
+ 	 			case 6:
+ 	 				svg += getString(R.string.svg_big6);
+ 	 				break;
+ 	 			case 7:
+ 	 				svg += getString(R.string.svg_big7);
+ 	 				break;
+ 	 			case 8:
+ 	 				svg += getString(R.string.svg_big8);
+ 	 				break;
+ 	 			case 9:
+ 	 				svg += getString(R.string.svg_big9);
+ 	 				break;
+ 	 			case 10:
+ 	 				svg += getString(R.string.svg_big10);
+ 	 				break;	 			
+ 			}
+ 			
+ 			// гости
+ 			switch (smallNum) {
+ 	 			case 1:
+ 	 				svg += getString(R.string.svg_small_1);
+ 	 				break;
+ 	 			case 2:
+ 	 				svg += getString(R.string.svg_small_2);
+ 	 				break;
+ 	 			case 3:
+ 	 				svg += getString(R.string.svg_small_3);
+ 	 				break;
+ 	 			case 4:
+ 	 				svg += getString(R.string.svg_small_4);
+ 	 				break;
+ 	 			case 5:
+ 	 				svg += getString(R.string.svg_small_5);
+ 	 				break;
+ 	 			case 6:
+ 	 				svg += getString(R.string.svg_small_6);
+ 	 				break;
+ 	 			case 7:
+ 	 				svg += getString(R.string.svg_small_7);
+ 	 				break;
+ 	 			case 8:
+ 	 				svg += getString(R.string.svg_small_8);
+ 	 				break;
+ 	 			case 9:
+ 	 				svg += getString(R.string.svg_small_9);
+ 	 				break;
+ 	 			case 10:
+ 	 				svg += getString(R.string.svg_small_10);
+ 	 				break;
+ 			}
+ 		
+ 		svg += getString(R.string.svg_end);
+ 		
+ 		// красный цвет
+ 		if (Color.compareToIgnoreCase("red") == 0){
+     		Pattern pattern1  = Pattern.compile("color1");
+     		Matcher matcher1 = pattern1.matcher(svg);
+     		svg = matcher1.replaceAll(getString(R.string.svg_color_red1));
+     		
+     		Pattern pattern2  = Pattern.compile("color2");
+     		Matcher matcher2 = pattern2.matcher(svg);
+     		svg = matcher2.replaceAll(getString(R.string.svg_color_red2));        		
+ 		}
 
-		svg += getString(R.string.svg_rectangle);
-		// Резервирование
-		if (Reserved)
-			svg += getString(R.string.svg_reserved);
-
-		// Комнаты
-		switch (bigNum) {
-		case 1:
-			svg += getString(R.string.svg_big1);
-			break;
-		case 2:
-			svg += getString(R.string.svg_big2);
-			break;
-		case 3:
-			svg += getString(R.string.svg_big3);
-			break;
-		case 4:
-			svg += getString(R.string.svg_big4);
-			break;
-		case 5:
-			svg += getString(R.string.svg_big5);
-			break;
-		case 6:
-			svg += getString(R.string.svg_big6);
-			break;
-		case 7:
-			svg += getString(R.string.svg_big7);
-			break;
-		case 8:
-			svg += getString(R.string.svg_big8);
-			break;
-		case 9:
-			svg += getString(R.string.svg_big9);
-			break;
-		case 10:
-			svg += getString(R.string.svg_big10);
-			break;
-		}
-
-		// гости
-		switch (smallNum) {
-		case 1:
-			svg += getString(R.string.svg_small_1);
-			break;
-		case 2:
-			svg += getString(R.string.svg_small_2);
-			break;
-		case 3:
-			svg += getString(R.string.svg_small_3);
-			break;
-		case 4:
-			svg += getString(R.string.svg_small_4);
-			break;
-		case 5:
-			svg += getString(R.string.svg_small_5);
-			break;
-		case 6:
-			svg += getString(R.string.svg_small_6);
-			break;
-		case 7:
-			svg += getString(R.string.svg_small_7);
-			break;
-		case 8:
-			svg += getString(R.string.svg_small_8);
-			break;
-		case 9:
-			svg += getString(R.string.svg_small_9);
-			break;
-		case 10:
-			svg += getString(R.string.svg_small_10);
-			break;
-		}
-
-		svg += getString(R.string.svg_end);
-
-		// красный цвет
-		if (Color.compareToIgnoreCase("red") == 0) {
-			Pattern pattern1 = Pattern.compile("color1");
-			Matcher matcher1 = pattern1.matcher(svg);
-			svg = matcher1.replaceAll(getString(R.string.svg_color_red1));
-
-			Pattern pattern2 = Pattern.compile("color2");
-			Matcher matcher2 = pattern2.matcher(svg);
-			svg = matcher2.replaceAll(getString(R.string.svg_color_red2));
-		}
-
-		if (Color.compareToIgnoreCase("blue") == 0) {
-			Pattern pattern1 = Pattern.compile("color1");
-			Matcher matcher1 = pattern1.matcher(svg);
-			svg = matcher1.replaceAll(getString(R.string.svg_color_blue1));
-
-			Pattern pattern2 = Pattern.compile("color2");
-			Matcher matcher2 = pattern2.matcher(svg);
-			svg = matcher2.replaceAll(getString(R.string.svg_color_blue2));
-		}
-
-		if (Color.compareToIgnoreCase("yellow") == 0) {
-			Pattern pattern1 = Pattern.compile("color1");
-			Matcher matcher1 = pattern1.matcher(svg);
-			svg = matcher1.replaceAll(getString(R.string.svg_color_yellow1));
-
-			Pattern pattern2 = Pattern.compile("color2");
-			Matcher matcher2 = pattern2.matcher(svg);
-			svg = matcher2.replaceAll(getString(R.string.svg_color_yellow2));
-		}
-
-		if (Color.compareToIgnoreCase("green") == 0) {
-			Pattern pattern1 = Pattern.compile("color1");
-			Matcher matcher1 = pattern1.matcher(svg);
-			svg = matcher1.replaceAll(getString(R.string.svg_color_green1));
-
-			Pattern pattern2 = Pattern.compile("color2");
-			Matcher matcher2 = pattern2.matcher(svg);
-			svg = matcher2.replaceAll(getString(R.string.svg_color_green2));
-		}
-
-		if (Color.compareToIgnoreCase("magenta") == 0) {
-			Pattern pattern1 = Pattern.compile("color1");
-			Matcher matcher1 = pattern1.matcher(svg);
-			svg = matcher1.replaceAll(getString(R.string.svg_color_magenta1));
-
-			Pattern pattern2 = Pattern.compile("color2");
-			Matcher matcher2 = pattern2.matcher(svg);
-			svg = matcher2.replaceAll(getString(R.string.svg_color_magenta2));
-		}
-		// Drawable img =
-		// SVGParser.getSVGFromString(svg).createPictureDrawable();
-		return svg;
-	}
+ 		if (Color.compareToIgnoreCase("blue") == 0){
+     		Pattern pattern1  = Pattern.compile("color1");
+     		Matcher matcher1 = pattern1.matcher(svg);
+     		svg = matcher1.replaceAll(getString(R.string.svg_color_blue1));
+     		
+     		Pattern pattern2  = Pattern.compile("color2");
+     		Matcher matcher2 = pattern2.matcher(svg);
+     		svg = matcher2.replaceAll(getString(R.string.svg_color_blue2));  
+ 		}
+ 	    
+ 		if (Color.compareToIgnoreCase("yellow") == 0){
+     		Pattern pattern1  = Pattern.compile("color1");
+     		Matcher matcher1 = pattern1.matcher(svg);
+     		svg = matcher1.replaceAll(getString(R.string.svg_color_yellow1));
+     		
+     		Pattern pattern2  = Pattern.compile("color2");
+     		Matcher matcher2 = pattern2.matcher(svg);
+     		svg = matcher2.replaceAll(getString(R.string.svg_color_yellow2));  
+ 		}
+ 		
+ 		if (Color.compareToIgnoreCase("green") == 0){
+     		Pattern pattern1  = Pattern.compile("color1");
+     		Matcher matcher1 = pattern1.matcher(svg);
+     		svg = matcher1.replaceAll(getString(R.string.svg_color_green1));
+     		
+     		Pattern pattern2  = Pattern.compile("color2");
+     		Matcher matcher2 = pattern2.matcher(svg);
+     		svg = matcher2.replaceAll(getString(R.string.svg_color_green2));  
+ 		}
+ 		
+ 		if (Color.compareToIgnoreCase("magenta") == 0){
+     		Pattern pattern1  = Pattern.compile("color1");
+     		Matcher matcher1 = pattern1.matcher(svg);
+     		svg = matcher1.replaceAll(getString(R.string.svg_color_magenta1));
+     		
+     		Pattern pattern2  = Pattern.compile("color2");
+     		Matcher matcher2 = pattern2.matcher(svg);
+     		svg = matcher2.replaceAll(getString(R.string.svg_color_magenta2));  
+ 		}
+ 		//Drawable img = SVGParser.getSVGFromString(svg).createPictureDrawable();
+ 		return svg;
+ 	}
     
 	// меню	
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -391,8 +389,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	  	    startActivity(intent);
 	        return true;
 	    case R.id.menu_update:
-	    	//sendData("|ReadTableStatus|\n");
-	    	new ConnectorMySQL().execute("192.168.1.44", "3306", "HostesHelper", "garcon", "123456", "SELECT  `room` ,  `table` ,  `guests` ,  `reserved` ,  `busy` FROM  `table_status`;");
+	    	sendData("|ReadTableStatus|\n");
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
@@ -413,7 +410,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
 	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
 
 	}
-/*
+
 	// Отправляем данные на сервер
     private void sendData(String _data){
         if (mTcpClient != null) {
@@ -423,61 +420,18 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
         	new connectTask().execute("");
         }
     }
-    */
-	
-    public void setResultSQL(ResultSet res){
+    public static void setResultSQL(ResultSet res){
+    	//res.next();
+		//str_res = res.getString(1);
+		//System.out.print(str_res);
+    	String str_res;
+    	
 		try {
 			while (res.next()) 
 			{
-	    		//System.out.println(str_res);
-	    		String _color = "red";
-	    				
-	    		int roomID = res.getInt(1);
-	    		int _tableID = res.getInt(2);
-	    		int _guests = res.getInt(3);		
-	    		boolean _reserved = res.getBoolean(4);
-	    		boolean _busy = res.getBoolean(5);
-	    				
-	    		// Если столик занят, то красим его
-	    		if(_busy){  				
-		    		switch (roomID) {
-					case 1:
-						//SvgDrawable svgd = new SvgDrawable(CreateSVGImage(_tableID, _reserved, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2);
-						//ImageViewArrayRoom1[_tableID-1].setBackground(svgd);
-						ImageViewArrayRoom1[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					case 2:
-					 	//ImageViewArrayRoom2[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					case 3:
-					 	//ImageViewArrayRoom3[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					case 4:
-						//ImageViewArrayRoom4[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-						break;
-		    		}
-	    		} 
-	    		// Если столик не занят и зарезервирова, рисуем резерв
-	    		else if (!_busy && _reserved) {
-	    			/*
-	    			switch (roomID) {
-					case 1:
-						ImageViewArrayRoom1[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, 0, "blue"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					 case 2:
-					 	ImageViewArrayRoom2[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, 0, "yellow"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					 case 3:
-					 	ImageViewArrayRoom3[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, 0, "green"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-					 case 4:
-					 	ImageViewArrayRoom4[_tableID-1].setImageDrawable(new SvgDrawable(CreateSVGImage(_tableID, _reserved, 0, "magenta"), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
-					 	break;
-		    		}
-		    		*/		
-	    		}
-	    	}
-
+				str_res = res.getString(1);
+				System.out.println(str_res);
+			}
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
@@ -533,7 +487,129 @@ public class MainActivity extends Activity implements ActionBar.TabListener{
             pDialog.dismiss();
 
     		//System.out.print("onPostExecute");
-			setResultSQL(result);
+    		setResultSQL(result);	
     	}
+    }
+    
+	//  Асинхронный поток для передачи и получения данных
+    public class connectTask extends AsyncTask<String,String,TCPClient> {
+ 
+        @Override
+        protected TCPClient doInBackground(String... message) {
+ 
+            //we create a TCPClient object and
+            mTcpClient = new TCPClient(new TCPClient.OnMessageReceived() {
+                @Override
+                //here the messageReceived method is implemented
+                public void messageReceived(String message) {
+                    //this method calls the onProgressUpdate
+                    publishProgress(message);
+                }
+            });
+            mTcpClient.run();
+ 
+            return null;
+        }
+ 
+		@Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            System.out.println(values);
+
+            ParsingData(values[0]);
+        }
+		
+		@SuppressWarnings("deprecation")
+		private void ParsingData(String _data)
+		{
+			String a = _data.split("\\|", -1)[1];
+//			String string1;
+//			String string2;
+//			//две строки равны, если
+//			(string1).compareToIgnoreCase(getString(string2)) == 0
+			strTableDataGet = null;
+			// Получаем данные по столику
+			if(a.compareToIgnoreCase("ReadTableData") == 0)
+			{
+				strTableDataGet = _data;
+//				showDialog(DIALOG_ID_VIEW);
+				Intent intent = new Intent(MainActivity.this, ViewStatus.class);
+		  	    startActivity(intent);
+			}
+			
+			// Получаем состояние столиков
+			if(a.compareToIgnoreCase("ReadTableStatus") == 0)
+			{
+				String TableStatus[] = _data.split("\\|", -1);
+				for(String strStatus:TableStatus){
+//					for (ImageView button : ImageViewArray) {		
+//						if(button.getTag().toString().compareToIgnoreCase(str.split("\\:", -1)[0]) == 0){
+//							if(str.split("\\:", -1)[1].compareToIgnoreCase("free") == 0)
+//								button.setImageDrawable(blueImg[Integer.valueOf(button.getTag().toString()) - 1]);
+//							if(str.split("\\:", -1)[1].compareToIgnoreCase("busy") == 0)
+//								button.setImageDrawable(redImg[Integer.valueOf(button.getTag().toString()) - 1]);
+////							if(str.split("\\:", -1)[1].compareToIgnoreCase("order") == 0)
+////								button.setBackgroundDrawable(new PaintDrawable(Color.YELLOW));
+//						}
+//			        }
+					
+					for(int j = 1; j<5;j++){
+						if(strStatus.split("\\:", -1)[0].compareToIgnoreCase(Integer.toString(j)) == 0){
+							// Table
+							int i = Integer.parseInt(strStatus.split("\\:", -1)[1]);
+							
+							// guests
+							int _guests = Integer.parseInt(strStatus.split("\\:", -1)[3]);
+							
+							// Status
+							String _color;
+							if(strStatus.split("\\:", -1)[2].compareToIgnoreCase("1") == 0){
+								_color = "red";
+								
+								switch (j) {
+							 		case 1:
+							 			ImageViewArrayRoom1[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 2:
+							 			ImageViewArrayRoom2[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 3:
+							 			ImageViewArrayRoom3[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+							 		case 4:
+							 			ImageViewArrayRoom4[i-1].setImageDrawable(new SvgDrawable(CreateSVGImage(i, false, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+							 			break;
+								}
+							}
+						
+						}
+					}
+//					if(strStatus.split("\\:", -1)[0].compareToIgnoreCase("2") == 0){
+//						int i = Integer.parseInt(strStatus.split("\\:", -1)[2]);
+//						String _color;
+//						int _guests = Integer.parseInt(strStatus.split("\\:", -1)[2]);
+//						
+//						if(strStatus.split("\\:", -1)[1].compareToIgnoreCase("1") == 0){
+//							_color = "red";
+//							
+//							ImageViewArrayRoom1[i].setImageDrawable(new SvgDrawable(CreateSVGImage(i, true, _guests, _color), (getResources().getDisplayMetrics().xdpi + getResources().getDisplayMetrics().ydpi) / 2));   
+//						}
+//					
+//					}
+				}
+			
+				// Получаем состояние записи данных
+				if(a.compareToIgnoreCase("StatusWrite") == 0)
+				{
+					String StatusWrite[] = _data.split("\\|", -1);
+					if(StatusWrite[2].compareToIgnoreCase("true") == 0){
+						Toast.makeText(getBaseContext(), "Данные записаны!", Toast.LENGTH_SHORT).show();
+					}
+					if(StatusWrite[2].compareToIgnoreCase("false") == 0){
+						Toast.makeText(getBaseContext(), "Данные не записаны!", Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+		}
     }
 }
