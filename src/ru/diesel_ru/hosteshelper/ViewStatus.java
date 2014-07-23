@@ -1,5 +1,6 @@
 package ru.diesel_ru.hosteshelper;
 
+import ru.diesel_ru.hosteshelper.MainActivity.connectTask;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.SharedPreferences;
